@@ -1,9 +1,10 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Settings, MessageSquare, Tag, User, Palette } from 'lucide-react';
+import { Settings, MessageSquare, Tag, User, Palette, Mail } from 'lucide-react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { WhatsAppConfig } from '@/components/settings/whatsapp-config';
+import { EmailConfig } from '@/components/settings/email-config';
 import { TemplateManager } from '@/components/settings/template-manager';
 import { TagManager } from '@/components/settings/tag-manager';
 import { ProfileForm } from '@/components/settings/profile-form';
@@ -14,6 +15,7 @@ import { AppearancePanel } from '@/components/settings/appearance-panel';
 const TAB_VALUES = [
   'profile',
   'whatsapp',
+  'email',
   'templates',
   'tags',
   'appearance',
@@ -28,10 +30,6 @@ export default function SettingsPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // The URL is the single source of truth for the active tab — no
-  // local state, no sync effect. A previous revision duplicated this
-  // into `useState` + a sync effect, which tripped React 19's
-  // set-state-in-effect rule and was also redundant.
   const queryTab = searchParams.get('tab');
   const tab: TabValue = isTabValue(queryTab) ? queryTab : 'profile';
 
@@ -46,8 +44,7 @@ export default function SettingsPage() {
       <div>
         <h1 className="text-2xl font-bold text-white">Settings</h1>
         <p className="text-sm text-slate-400 mt-1">
-          Manage your profile, WhatsApp® integration, message templates, and
-          tags.
+          Manage your profile, WhatsApp® API, Email Gateway, message templates, and tags.
         </p>
       </div>
 
@@ -66,6 +63,13 @@ export default function SettingsPage() {
           >
             <Settings className="size-4" />
             WhatsApp Config
+          </TabsTrigger>
+          <TabsTrigger
+            value="email"
+            className="data-active:bg-slate-800 data-active:text-primary text-slate-400"
+          >
+            <Mail className="size-4" />
+            Email Gateway
           </TabsTrigger>
           <TabsTrigger
             value="templates"
@@ -98,6 +102,10 @@ export default function SettingsPage() {
 
         <TabsContent value="whatsapp">
           <WhatsAppConfig />
+        </TabsContent>
+
+        <TabsContent value="email">
+          <EmailConfig />
         </TabsContent>
 
         <TabsContent value="templates">
