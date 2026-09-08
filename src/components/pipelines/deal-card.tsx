@@ -47,10 +47,10 @@ export function DealCard({ deal, stage, onEdit, isOverlay }: DealCardProps) {
         e.stopPropagation();
         onEdit(deal);
       }}
-      className={`group relative w-full cursor-pointer rounded-xl border border-slate-700/50 bg-slate-800/70 pl-4 pr-3 py-3 text-left shadow-sm transition-all ${
+      className={`group relative w-full cursor-pointer rounded-xl border border-slate-700/60 bg-slate-900/70 backdrop-blur-md pl-4 pr-3 py-3 text-left shadow-sm transition-all ${
         isOverlay
-          ? "shadow-xl"
-          : "hover:-translate-y-0.5 hover:border-slate-600 hover:bg-slate-800 hover:shadow-lg"
+          ? "shadow-2xl border-primary/50 bg-slate-900"
+          : "hover:-translate-y-0.5 hover:border-slate-600 hover:bg-slate-800/80 hover:shadow-lg"
       }`}
     >
       {/* 4px left accent bar using stage color */}

@@ -186,7 +186,7 @@ function StageColumn({
     // restore the flex-1 share-the-row behavior. The droppable ref is
     // on the inner messages region below — intentionally NOT here, so
     // a drag over the column header doesn't highlight the whole column.
-    <div className="flex w-[85vw] min-w-[260px] max-w-[320px] shrink-0 snap-start flex-col rounded-xl border border-slate-800 bg-slate-900/60 p-4 lg:w-auto lg:max-w-none lg:flex-1 lg:basis-[260px] lg:shrink lg:snap-none">
+    <div className="flex w-[85vw] min-w-[260px] max-w-[320px] shrink-0 snap-start flex-col glass-card p-4 lg:w-auto lg:max-w-none lg:flex-1 lg:basis-[260px] lg:shrink lg:snap-none">
       {/* 3px colored top border — sits above the column's padding */}
       <div
         className="-mx-4 -mt-4 h-[3px] rounded-t-xl"

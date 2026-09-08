@@ -351,7 +351,7 @@ function FlowCard({
         ? Archive
         : PauseCircle;
   return (
-    <div className="flex flex-col rounded-lg border border-slate-800 bg-slate-900 p-4 transition-colors hover:border-slate-700">
+    <div className="flex flex-col glass-card p-4 transition-all hover:border-slate-700">
       <div className="flex items-start justify-between gap-2">
         <div className="flex min-w-0 items-center gap-2">
           <Workflow className="h-4 w-4 shrink-0 text-primary" />
