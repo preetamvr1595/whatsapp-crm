@@ -101,7 +101,18 @@ function buildHeaderComponent(
   let mediaPayload: { link?: string; id?: string } | null = null;
 
   if (params.headerMediaUrl?.trim()) {
-    mediaPayload = { link: params.headerMediaUrl.trim() };
+    let urlStr = params.headerMediaUrl.trim();
+    if (!/^https?:\/\//i.test(urlStr)) {
+      urlStr = `https://${urlStr}`;
+    }
+    try {
+      const parsed = new URL(urlStr);
+      mediaPayload = { link: parsed.toString() };
+    } catch {
+      throw new Error(
+        'Header media URL is not a valid URI — provide a full URL (e.g. https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=800).',
+      );
+    }
   } else if (params.headerMediaId?.trim()) {
     const val = params.headerMediaId.trim();
     if (val.startsWith('http://') || val.startsWith('https://')) {
@@ -117,7 +128,16 @@ function buildHeaderComponent(
       mediaPayload = { id: val };
     }
   } else if (template.header_media_url?.trim()) {
-    mediaPayload = { link: template.header_media_url.trim() };
+    let urlStr = template.header_media_url.trim();
+    if (!/^https?:\/\//i.test(urlStr)) {
+      urlStr = `https://${urlStr}`;
+    }
+    try {
+      const parsed = new URL(urlStr);
+      mediaPayload = { link: parsed.toString() };
+    } catch {
+      mediaPayload = { link: urlStr };
+    }
   }
 
   if (!mediaPayload) {
