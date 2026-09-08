@@ -46,8 +46,8 @@ export function ConversationsChart({ series, loading, range, onRangeChange }: Co
   }, [data])
 
   return (
-    <section className="flex h-full flex-col rounded-xl border border-slate-800 bg-slate-900">
-      <header className="flex items-center justify-between border-b border-slate-800 px-5 py-4">
+    <section className="flex h-full flex-col glass-card overflow-hidden">
+      <header className="flex items-center justify-between border-b border-violet-500/20 px-5 py-4 bg-slate-950/40">
         <div>
           <h2 className="text-sm font-semibold text-white">Conversations Over Time</h2>
           <p className="mt-0.5 text-xs text-slate-500">Daily message volume by direction</p>

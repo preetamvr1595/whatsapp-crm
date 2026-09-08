@@ -25,8 +25,8 @@ export function ResponseTimeChart({
   const hasData = data?.buckets.some((b) => b.avgMinutes != null) ?? false
 
   return (
-    <section className="rounded-xl border border-slate-800 bg-slate-900">
-      <header className="flex items-center justify-between border-b border-slate-800 px-5 py-4">
+    <section className="glass-card overflow-hidden">
+      <header className="flex items-center justify-between border-b border-violet-500/20 px-5 py-4 bg-slate-950/40">
         <div>
           <h2 className="text-sm font-semibold text-white">
             Average First Response Time

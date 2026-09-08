@@ -56,8 +56,20 @@ const THEME_BOOT_SCRIPT = `
     var saved = localStorage.getItem(STORAGE_KEY);
     var theme = ALLOWED.indexOf(saved) !== -1 ? saved : DEFAULT;
     document.documentElement.dataset.theme = theme;
+
+    var mode = localStorage.getItem("wacrm.mode") || "dark";
+    document.documentElement.dataset.mode = mode;
+    if (mode === "light") {
+      document.documentElement.classList.add("light");
+      document.documentElement.classList.remove("dark");
+    } else {
+      document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
+    }
   } catch (_e) {
     document.documentElement.dataset.theme = ${JSON.stringify(DEFAULT_THEME)};
+    document.documentElement.dataset.mode = "dark";
+    document.documentElement.classList.add("dark");
   }
 })();
 `;

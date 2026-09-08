@@ -51,8 +51,12 @@ export function Header({ onOpenSidebar }: HeaderProps) {
     profile?.email?.charAt(0)?.toUpperCase() ??
     "U";
 
+import { ThemeToggle } from "@/components/ui/theme-toggle";
+
+// ...
+
   return (
-    <header className="flex h-14 shrink-0 items-center justify-between gap-3 border-b border-slate-800 bg-slate-950 px-4 lg:px-6">
+    <header className="flex h-14 shrink-0 items-center justify-between gap-3 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-xl px-4 lg:px-6 dark:border-slate-800/80 dark:bg-slate-950/80 light:border-slate-200 light:bg-white/90">
       <div className="flex min-w-0 items-center gap-2">
         {/* Hamburger — mobile only. 44×44 hit target per Apple HIG. */}
         <button
@@ -63,12 +67,15 @@ export function Header({ onOpenSidebar }: HeaderProps) {
         >
           <Menu className="h-5 w-5" />
         </button>
-        <h1 className="truncate text-base font-semibold text-white sm:text-lg">
+        <h1 className="truncate text-base font-semibold text-white dark:text-white light:text-slate-900 sm:text-lg">
           {title}
         </h1>
       </div>
 
-      <DropdownMenu>
+      <div className="flex items-center gap-3">
+        <ThemeToggle />
+
+        <DropdownMenu>
         <DropdownMenuTrigger
           className="flex items-center gap-2 rounded-md px-1 py-1 transition-colors hover:bg-slate-800/70 focus:bg-slate-800/70 focus:outline-none data-popup-open:bg-slate-800/70 sm:gap-3 sm:pl-1 sm:pr-3"
           aria-label="Open account menu"

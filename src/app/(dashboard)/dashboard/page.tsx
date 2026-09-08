@@ -117,12 +117,34 @@ export default function DashboardPage() {
 
   return (
     <div className="space-y-5">
-      {/* Header */}
-      <div>
-        <h1 className="text-2xl font-bold text-white">Dashboard</h1>
-        <p className="mt-1 text-sm text-slate-400">
-          Live analytics across conversations, contacts, deals, broadcasts, and automations.
-        </p>
+      {/* Cyberpunk Hero Header Banner */}
+      <div className="relative overflow-hidden rounded-2xl glass-panel p-6 shadow-2xl border border-violet-500/30">
+        <div className="absolute -top-12 -right-12 h-40 w-40 rounded-full bg-violet-500/20 blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-10 -left-10 h-32 w-32 rounded-full bg-cyan-500/20 blur-2xl pointer-events-none" />
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div className="flex items-center gap-2 mb-1.5">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-75" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-cyan-400" />
+              </span>
+              <span className="text-[11px] font-bold uppercase tracking-wider text-cyan-300">
+                Command Studio · Realtime Operating Hub
+              </span>
+            </div>
+            <h1 className="text-3xl font-extrabold tracking-tight text-white">
+              WhatsApp CRM <span className="text-neon-gradient">Intelligence</span>
+            </h1>
+            <p className="mt-1 text-sm text-slate-300">
+              Live metrics across multi-channel inbox, contact lists, sales pipeline, broadcasts, and automation routines.
+            </p>
+          </div>
+          <div className="flex items-center gap-2 self-start md:self-auto">
+            <span className="rounded-full border border-violet-500/40 bg-violet-500/10 px-3 py-1 text-xs font-semibold text-violet-300 shadow-[0_0_10px_rgba(139,92,246,0.3)]">
+              ⚡ Meta API Active
+            </span>
+          </div>
+        </div>
       </div>
 
       {/* Metric cards */}

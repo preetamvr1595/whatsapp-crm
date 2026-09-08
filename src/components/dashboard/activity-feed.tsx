@@ -54,8 +54,8 @@ export function ActivityFeed({ items, loading }: ActivityFeedProps) {
     i === 0 || totalLoaded > PAGE_SIZES[i - 1]
 
   return (
-    <section className="rounded-xl border border-slate-800 bg-slate-900">
-      <header className="flex items-center justify-between border-b border-slate-800 px-5 py-4">
+    <section className="glass-card overflow-hidden">
+      <header className="flex items-center justify-between border-b border-violet-500/20 px-5 py-4 bg-slate-950/40">
         <h2 className="text-sm font-semibold text-white">Recent Activity</h2>
         <Link
           href="/inbox"
