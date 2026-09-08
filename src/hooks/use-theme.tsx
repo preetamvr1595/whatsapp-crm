@@ -87,8 +87,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, [applyMode]);
 
   const toggleMode = useCallback(() => {
-    setMode((prev) => (prev === "dark" ? "light" : "dark"));
-  }, [setMode]);
+    setMode(mode === "dark" ? "light" : "dark");
+  }, [mode, setMode]);
 
   useEffect(() => {
     applyMode(mode);

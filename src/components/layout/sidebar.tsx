@@ -31,6 +31,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ThemeModeSegmented } from "@/components/ui/theme-toggle";
 
 interface NavItem {
   href: string;
@@ -214,6 +215,11 @@ export function Sidebar({ open = false, onClose }: SidebarProps) {
             })}
           </ul>
         </nav>
+
+        {/* Theme mode switcher */}
+        <div className="px-3 py-2">
+          <ThemeModeSegmented />
+        </div>
 
         {/* User section */}
         <div className="shrink-0 border-t border-slate-800/80 p-3">

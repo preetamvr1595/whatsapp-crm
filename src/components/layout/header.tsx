@@ -16,6 +16,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const pageTitles: Record<string, string> = {
   "/dashboard": "Dashboard",
@@ -50,10 +51,6 @@ export function Header({ onOpenSidebar }: HeaderProps) {
     profile?.full_name?.charAt(0)?.toUpperCase() ??
     profile?.email?.charAt(0)?.toUpperCase() ??
     "U";
-
-import { ThemeToggle } from "@/components/ui/theme-toggle";
-
-// ...
 
   return (
     <header className="flex h-14 shrink-0 items-center justify-between gap-3 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-xl px-4 lg:px-6 dark:border-slate-800/80 dark:bg-slate-950/80 light:border-slate-200 light:bg-white/90">
@@ -141,6 +138,7 @@ import { ThemeToggle } from "@/components/ui/theme-toggle";
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
+      </div>
     </header>
   );
 }

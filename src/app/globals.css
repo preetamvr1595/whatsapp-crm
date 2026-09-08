@@ -3,6 +3,7 @@
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant light (&:is(.light *));
 
 @theme inline {
   --color-background: var(--background);
@@ -87,6 +88,39 @@ html[data-theme="violet"] {
   --sidebar-ring: oklch(0.62 0.25 293);
 }
 
+/* LIGHT MODE OVERRIDES */
+html.light,
+html[data-mode="light"] {
+  --background: oklch(0.985 0.005 260);
+  --foreground: oklch(0.15 0.02 260);
+  --card: rgba(255, 255, 255, 0.9);
+  --card-foreground: oklch(0.15 0.02 260);
+  --popover: #ffffff;
+  --popover-foreground: oklch(0.15 0.02 260);
+  --primary: oklch(0.55 0.25 293);
+  --primary-foreground: #ffffff;
+  --primary-hover: oklch(0.48 0.25 293);
+  --primary-soft: oklch(0.55 0.25 293 / 0.1);
+  --primary-soft-2: oklch(0.55 0.25 293 / 0.18);
+  --secondary: oklch(0.95 0.01 260);
+  --secondary-foreground: oklch(0.15 0.02 260);
+  --muted: oklch(0.95 0.01 260);
+  --muted-foreground: oklch(0.45 0.02 260);
+  --accent: oklch(0.93 0.01 260);
+  --accent-foreground: oklch(0.15 0.02 260);
+  --border: rgba(226, 232, 240, 0.9);
+  --input: rgba(226, 232, 240, 0.9);
+  --ring: oklch(0.55 0.25 293);
+  --sidebar: #ffffff;
+  --sidebar-foreground: oklch(0.15 0.02 260);
+  --sidebar-primary: oklch(0.55 0.25 293);
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: oklch(0.95 0.01 260);
+  --sidebar-accent-foreground: oklch(0.15 0.02 260);
+  --sidebar-border: rgba(226, 232, 240, 0.9);
+  --sidebar-ring: oklch(0.55 0.25 293);
+}
+
 @layer base {
   * {
     border-color: var(--border);
@@ -105,6 +139,21 @@ html[data-theme="violet"] {
     background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 36px 36px, 36px 36px;
     background-attachment: fixed;
   }
+
+  html.light body,
+  html[data-mode="light"] body {
+    background-color: #f8fafc;
+    color: #0f172a;
+    background-image: 
+      radial-gradient(circle at 15% 15%, rgba(139, 92, 246, 0.10) 0%, transparent 45%),
+      radial-gradient(circle at 85% 15%, rgba(6, 182, 212, 0.08) 0%, transparent 45%),
+      radial-gradient(circle at 50% 80%, rgba(217, 70, 239, 0.06) 0%, transparent 50%),
+      linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+    background-attachment: fixed;
+  }
+
   body::selection {
     background-color: rgba(168, 85, 247, 0.4);
     color: #ffffff;
@@ -125,6 +174,13 @@ html[data-theme="violet"] {
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+html.light .glass-card,
+html[data-mode="light"] .glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+}
+
 .glass-card-hover {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -135,10 +191,25 @@ html[data-theme="violet"] {
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+html.light .glass-card-hover,
+html[data-mode="light"] .glass-card-hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+}
+
 .glass-card-hover:hover {
   border-color: rgba(6, 182, 212, 0.5);
   background: linear-gradient(135deg, rgba(20, 30, 58, 0.85) 0%, rgba(15, 22, 45, 0.9) 100%);
   box-shadow: 0 15px 35px -5px rgba(139, 92, 246, 0.35), inset 0 1px 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+html.light .glass-card-hover:hover,
+html[data-mode="light"] .glass-card-hover:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+  background: #ffffff;
+  box-shadow: 0 15px 30px -5px rgba(139, 92, 246, 0.15);
   transform: translateY(-2px);
 }
 
@@ -150,6 +221,13 @@ html[data-theme="violet"] {
   box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.7), 0 0 25px rgba(139, 92, 246, 0.15);
 }
 
+html.light .glass-panel,
+html[data-mode="light"] .glass-panel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.98) 100%);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.07);
+}
+
 /* Neon Gradient Text */
 .text-neon-gradient {
   background: linear-gradient(135deg, #e879f9 0%, #a855f7 40%, #38bdf8 100%);
@@ -157,8 +235,22 @@ html[data-theme="violet"] {
   -webkit-text-fill-color: transparent;
 }
 
+html.light .text-neon-gradient,
+html[data-mode="light"] .text-neon-gradient {
+  background: linear-gradient(135deg, #9333ea 0%, #7c3aed 40%, #0284c7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .text-cyan-gradient {
   background: linear-gradient(135deg, #38bdf8 0%, #06b6d4 50%, #34d399 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html.light .text-cyan-gradient,
+html[data-mode="light"] .text-cyan-gradient {
+  background: linear-gradient(135deg, #0284c7 0%, #0891b2 50%, #059669 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -207,4 +299,104 @@ html[data-theme="violet"] {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(168, 85, 247, 0.8);
+}
+
+html.light ::-webkit-scrollbar-track,
+html[data-mode="light"] ::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.8);
+}
+html.light ::-webkit-scrollbar-thumb,
+html[data-mode="light"] ::-webkit-scrollbar-thumb {
+  background: rgba(203, 213, 225, 0.9);
+}
+
+/* LIGHT MODE UTILITY OVERRIDES */
+html.light .bg-slate-950,
+html.light .bg-slate-900,
+html.light .bg-slate-950\/80,
+html.light .bg-slate-900\/60,
+html.light .bg-slate-900\/80,
+html.light .bg-slate-900\/40,
+html.light .bg-slate-900\/90,
+html.light .bg-slate-950\/90,
+html.light .bg-slate-900\/50,
+html.light .bg-slate-950\/40,
+html.light .bg-slate-800,
+html.light .bg-slate-800\/50,
+html.light .bg-slate-800\/70,
+html.light .bg-slate-800\/80,
+html[data-mode="light"] .bg-slate-950,
+html[data-mode="light"] .bg-slate-900,
+html[data-mode="light"] .bg-slate-950\/80,
+html[data-mode="light"] .bg-slate-900\/60,
+html[data-mode="light"] .bg-slate-900\/80,
+html[data-mode="light"] .bg-slate-900\/40,
+html[data-mode="light"] .bg-slate-900\/90,
+html[data-mode="light"] .bg-slate-950\/90,
+html[data-mode="light"] .bg-slate-900\/50,
+html[data-mode="light"] .bg-slate-950\/40,
+html[data-mode="light"] .bg-slate-800,
+html[data-mode="light"] .bg-slate-800\/50,
+html[data-mode="light"] .bg-slate-800\/70,
+html[data-mode="light"] .bg-slate-800\/80 {
+  background-color: #ffffff !important;
+}
+
+html.light .bg-slate-800\/40,
+html.light .bg-slate-800\/60,
+html.light .bg-slate-800\/30,
+html.light .bg-slate-900\/30,
+html[data-mode="light"] .bg-slate-800\/40,
+html[data-mode="light"] .bg-slate-800\/60,
+html[data-mode="light"] .bg-slate-800\/30,
+html[data-mode="light"] .bg-slate-900\/30 {
+  background-color: #f1f5f9 !important;
+}
+
+html.light .text-white,
+html[data-mode="light"] .text-white {
+  color: #0f172a !important;
+}
+
+html.light .text-slate-200,
+html.light .text-slate-300,
+html[data-mode="light"] .text-slate-200,
+html[data-mode="light"] .text-slate-300 {
+  color: #1e293b !important;
+}
+
+html.light .text-slate-400,
+html[data-mode="light"] .text-slate-400 {
+  color: #475569 !important;
+}
+
+html.light .text-slate-500,
+html[data-mode="light"] .text-slate-500 {
+  color: #64748b !important;
+}
+
+html.light .border-slate-800,
+html.light .border-slate-700,
+html.light .border-slate-800\/80,
+html.light .border-slate-700\/60,
+html.light .border-slate-700\/80,
+html.light .border-slate-700\/50,
+html.light .border-violet-500\/20,
+html.light .border-violet-500\/30,
+html[data-mode="light"] .border-slate-800,
+html[data-mode="light"] .border-slate-700,
+html[data-mode="light"] .border-slate-800\/80,
+html[data-mode="light"] .border-slate-700\/60,
+html[data-mode="light"] .border-slate-700\/80,
+html[data-mode="light"] .border-slate-700\/50,
+html[data-mode="light"] .border-violet-500\/20,
+html[data-mode="light"] .border-violet-500\/30 {
+  border-color: #e2e8f0 !important;
+}
+
+html.light .divide-slate-800 > :not([hidden]) ~ :not([hidden]),
+html.light .divide-slate-700 > :not([hidden]) ~ :not([hidden]),
+html[data-mode="light"] .divide-slate-800 > :not([hidden]) ~ :not([hidden]),
+html[data-mode="light"] .divide-slate-700 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #e2e8f0 !important;
 }
