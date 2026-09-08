@@ -111,31 +111,33 @@ export function Sidebar({ open = false, onClose }: SidebarProps) {
 
       <aside
         className={cn(
-          // Mobile: fixed drawer that slides in from the left.
-          "fixed inset-y-0 left-0 z-40 flex h-full w-64 flex-col border-r border-slate-800 bg-slate-900",
+          "fixed inset-y-0 left-0 z-40 flex h-full w-64 flex-col border-r border-slate-800/80 bg-slate-950/80 backdrop-blur-2xl shadow-2xl",
           "transition-transform duration-200 ease-out will-change-transform",
           open ? "translate-x-0" : "-translate-x-full",
-          // Desktop: static, always visible — reset all the mobile framing.
           "lg:static lg:z-0 lg:w-60 lg:translate-x-0 lg:transition-none",
         )}
         aria-label="Primary"
       >
-        {/* Logo row. On mobile we put a close button here; on desktop the
-            close button is hidden since the sidebar is always-visible. */}
-        <div className="flex h-14 shrink-0 items-center justify-between gap-2 border-b border-slate-800 px-4">
-          <Link href="/dashboard" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-              <MessageSquare className="h-4 w-4" />
+        {/* Logo row */}
+        <div className="flex h-16 shrink-0 items-center justify-between gap-2 border-b border-slate-800/80 px-4">
+          <Link href="/dashboard" className="flex items-center gap-3 group">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-primary via-indigo-600 to-cyan-500 text-white shadow-lg shadow-primary/30 transition-transform group-hover:scale-105">
+              <MessageSquare className="h-5 w-5" />
             </div>
-            <span className="text-sm font-semibold text-white">
-              CRM Template for WhatsApp
-            </span>
+            <div className="flex flex-col">
+              <span className="text-sm font-bold text-white tracking-tight">
+                WhatsApp CRM
+              </span>
+              <span className="text-[10px] text-slate-400 font-mono">
+                Multi-Channel Suite
+              </span>
+            </div>
           </Link>
           <button
             type="button"
             onClick={onClose}
             aria-label="Close menu"
-            className="flex h-9 w-9 items-center justify-center rounded-md text-slate-400 hover:bg-slate-800 hover:text-white lg:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white lg:hidden"
           >
             <X className="h-5 w-5" />
           </button>
@@ -143,7 +145,7 @@ export function Sidebar({ open = false, onClose }: SidebarProps) {
 
         {/* Main navigation */}
         <nav className="flex-1 overflow-y-auto px-3 py-4">
-          <ul className="flex flex-col gap-1">
+          <ul className="flex flex-col gap-1.5">
             {navItems.map((item) => {
               const isActive =
                 pathname === item.href ||
@@ -157,19 +159,18 @@ export function Sidebar({ open = false, onClose }: SidebarProps) {
                   <Link
                     href={item.href}
                     className={cn(
-                      // Taller on mobile so fingers can hit the row reliably (≥44px).
-                      "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors lg:py-2",
+                      "flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium transition-all duration-150 lg:py-2.5",
                       isActive
-                        ? "bg-primary/10 text-primary"
-                        : "text-slate-400 hover:bg-slate-800 hover:text-white",
+                        ? "bg-gradient-to-r from-primary/20 to-primary/5 text-primary border border-primary/30 shadow-[0_0_15px_rgba(139,92,246,0.2)] font-semibold"
+                        : "text-slate-400 hover:bg-slate-900/60 hover:text-slate-200 hover:border hover:border-slate-800/60",
                     )}
                   >
-                    <item.icon className="h-4 w-4" />
+                    <item.icon className={cn("h-4 w-4 transition-colors", isActive ? "text-primary" : "text-slate-400")} />
                     <span className="flex-1">{item.label}</span>
                     {item.beta && (
                       <span
                         aria-label="Beta feature"
-                        className="rounded-full border border-amber-500/40 bg-amber-500/10 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-amber-300"
+                        className="rounded-full border border-amber-500/40 bg-amber-500/10 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-amber-300 shadow-sm"
                       >
                         Beta
                       </span>
@@ -189,9 +190,9 @@ export function Sidebar({ open = false, onClose }: SidebarProps) {
             })}
           </ul>
 
-          <div className="my-4 border-t border-slate-800" />
+          <div className="my-4 border-t border-slate-800/80" />
 
-          <ul className="flex flex-col gap-1">
+          <ul className="flex flex-col gap-1.5">
             {bottomNavItems.map((item) => {
               const isActive = pathname.startsWith(item.href);
               return (
@@ -199,13 +200,13 @@ export function Sidebar({ open = false, onClose }: SidebarProps) {
                   <Link
                     href={item.href}
                     className={cn(
-                      "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors lg:py-2",
+                      "flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium transition-all duration-150 lg:py-2.5",
                       isActive
-                        ? "bg-primary/10 text-primary"
-                        : "text-slate-400 hover:bg-slate-800 hover:text-white",
+                        ? "bg-gradient-to-r from-primary/20 to-primary/5 text-primary border border-primary/30 shadow-[0_0_15px_rgba(139,92,246,0.2)] font-semibold"
+                        : "text-slate-400 hover:bg-slate-900/60 hover:text-slate-200 hover:border hover:border-slate-800/60",
                     )}
                   >
-                    <item.icon className="h-4 w-4" />
+                    <item.icon className={cn("h-4 w-4 transition-colors", isActive ? "text-primary" : "text-slate-400")} />
                     {item.label}
                   </Link>
                 </li>
@@ -215,25 +216,25 @@ export function Sidebar({ open = false, onClose }: SidebarProps) {
         </nav>
 
         {/* User section */}
-        <div className="shrink-0 border-t border-slate-800 p-3">
+        <div className="shrink-0 border-t border-slate-800/80 p-3">
           <DropdownMenu>
-            <DropdownMenuTrigger className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left transition-colors hover:bg-slate-800/60 focus:bg-slate-800/60 focus:outline-none data-popup-open:bg-slate-800/60">
-              <Avatar className="size-8 shrink-0">
+            <DropdownMenuTrigger className="flex w-full items-center gap-3 rounded-xl p-2 text-left transition-all hover:bg-slate-900/80 hover:border hover:border-slate-800 focus:outline-none">
+              <Avatar className="size-8 shrink-0 ring-2 ring-primary/20">
                 {profile?.avatar_url ? (
                   <AvatarImage
                     src={profile.avatar_url}
                     alt={profile.full_name ?? "Avatar"}
                   />
                 ) : null}
-                <AvatarFallback className="bg-primary/10 text-sm font-medium text-primary">
+                <AvatarFallback className="bg-primary/20 text-sm font-semibold text-primary">
                   {profile?.full_name?.charAt(0)?.toUpperCase() ??
                     profile?.email?.charAt(0)?.toUpperCase() ??
                     "U"}
                 </AvatarFallback>
               </Avatar>
               <div className="min-w-0 flex-1">
-                <p className="truncate text-sm font-medium text-white">
-                  {profile?.full_name ?? "User"}
+                <p className="truncate text-sm font-semibold text-white">
+                  {profile?.full_name ?? "User Account"}
                 </p>
                 <p className="truncate text-xs text-slate-400">
                   {profile?.email ?? ""}
@@ -243,8 +244,8 @@ export function Sidebar({ open = false, onClose }: SidebarProps) {
             <DropdownMenuContent
               align="end"
               side="top"
-              sideOffset={6}
-              className="min-w-56 bg-slate-900 text-slate-100 ring-slate-700"
+              sideOffset={8}
+              className="min-w-56 bg-slate-950/90 backdrop-blur-xl border border-slate-800 text-slate-100 shadow-2xl"
             >
               <DropdownMenuItem
                 render={
@@ -273,7 +274,7 @@ export function Sidebar({ open = false, onClose }: SidebarProps) {
               <DropdownMenuSeparator className="bg-slate-800" />
               <DropdownMenuItem
                 onClick={signOut}
-                className="text-slate-200 focus:bg-slate-800 focus:text-white"
+                className="text-red-400 focus:bg-red-950/40 focus:text-red-300"
               >
                 <LogOut className="size-4" />
                 Sign out
@@ -282,6 +283,9 @@ export function Sidebar({ open = false, onClose }: SidebarProps) {
           </DropdownMenu>
         </div>
       </aside>
+    </>
+  );
+}
     </>
   );
 }
