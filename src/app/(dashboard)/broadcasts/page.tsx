@@ -176,14 +176,14 @@ export default function BroadcastsPage() {
 
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-white">Broadcasts</h1>
+          <h1 className="text-2xl font-bold text-white tracking-tight">Broadcasts</h1>
           <p className="mt-1 text-sm text-slate-400">
-            Send bulk messages to your contacts using approved templates.
+            Send bulk messages to your contacts using official Meta approved templates.
           </p>
         </div>
         <Button
           onClick={() => router.push('/broadcasts/new')}
-          className="bg-primary text-primary-foreground hover:bg-primary/90"
+          className="bg-gradient-to-r from-primary via-indigo-600 to-cyan-500 text-white font-semibold shadow-lg shadow-primary/30 hover:scale-[1.02] transition-transform"
         >
           <Plus className="h-4 w-4" />
           New Broadcast
@@ -191,24 +191,24 @@ export default function BroadcastsPage() {
       </div>
 
       {broadcasts.length === 0 ? (
-        <div className="flex h-64 flex-col items-center justify-center rounded-xl border border-slate-800 bg-slate-900">
-          <Radio className="mb-3 h-10 w-10 text-slate-600" />
-          <p className="text-sm font-medium text-white">No broadcasts yet</p>
+        <div className="glass-card flex h-64 flex-col items-center justify-center p-6 text-center">
+          <Radio className="mb-3 h-10 w-10 text-primary animate-pulse" />
+          <p className="text-base font-semibold text-white">No broadcasts yet</p>
           <p className="mt-1 text-xs text-slate-400">
-            Create your first broadcast to reach your contacts at scale.
+            Create your first broadcast campaign to reach your contacts at scale.
           </p>
           <Button
             onClick={() => router.push('/broadcasts/new')}
-            className="mt-4 bg-primary text-primary-foreground hover:bg-primary/90"
+            className="mt-4 bg-primary text-primary-foreground hover:bg-primary/90 shadow-md shadow-primary/20"
           >
             <Plus className="h-4 w-4" />
             New Broadcast
           </Button>
         </div>
       ) : (
-        <div className="overflow-x-auto rounded-xl border border-slate-800 bg-slate-900">
+        <div className="glass-card overflow-hidden">
           <Table>
-            <TableHeader>
+            <TableHeader className="bg-slate-950/60">
               <TableRow className="border-slate-800 hover:bg-transparent">
                 <TableHead className="text-slate-400">Name</TableHead>
                 <TableHead className="hidden text-slate-400 md:table-cell">Template</TableHead>
