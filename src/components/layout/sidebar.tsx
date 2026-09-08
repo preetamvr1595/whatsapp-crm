@@ -286,6 +286,3 @@ export function Sidebar({ open = false, onClose }: SidebarProps) {
     </>
   );
 }
-    </>
-  );
-}
