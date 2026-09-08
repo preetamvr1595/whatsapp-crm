@@ -724,23 +724,20 @@ export function MessageThread({
 
   return (
     <div className={cn("flex flex-1 flex-col", DOODLE_BG_CLASSES)}>
-      {/* Header — solid bg-slate-900 sits on top of the doodle so the
-          name/avatar/dropdowns stay legible. */}
-      <div className="flex items-center justify-between gap-2 border-b border-slate-800 bg-slate-900 px-3 py-3 sm:px-4">
+      {/* Header — glass backdrop blur sits on top of doodle pattern */}
+      <div className="flex items-center justify-between gap-2 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-xl px-4 py-3 sm:px-5">
         <div className="flex min-w-0 items-center gap-2 sm:gap-3">
-          {/* Back-to-list button — mobile only. Hidden on lg+ where the
-              conversation list is always visible next to the thread. */}
           {onBack && (
             <button
               type="button"
               onClick={onBack}
               aria-label="Back to conversations"
-              className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-md text-slate-300 hover:bg-slate-800 hover:text-white lg:hidden"
+              className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white lg:hidden"
             >
               <ArrowLeft className="h-5 w-5" />
             </button>
           )}
-          <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-slate-700 text-sm font-medium text-white">
+          <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-primary to-indigo-600 text-sm font-semibold text-white shadow-md shadow-primary/20 ring-2 ring-primary/30">
             {displayName.charAt(0).toUpperCase()}
           </div>
           <div className="min-w-0">
