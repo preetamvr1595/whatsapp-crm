@@ -258,32 +258,61 @@ html[data-theme="rose"] {
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    border-color: var(--border);
+    outline-color: color-mix(in oklch, var(--ring) 50%, transparent);
   }
   body {
-    @apply bg-background text-foreground selection:bg-primary/30 selection:text-primary-foreground;
+    background-color: var(--background);
+    color: var(--foreground);
     background-image: 
       radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.08) 0px, transparent 50%),
       radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.06) 0px, transparent 50%),
       radial-gradient(at 50% 100%, rgba(16, 185, 129, 0.05) 0px, transparent 50%);
     background-attachment: fixed;
   }
+  body::selection {
+    background-color: color-mix(in oklch, var(--primary) 30%, transparent);
+    color: var(--primary-foreground);
+  }
   html {
-    @apply font-sans;
+    font-family: var(--font-sans), system-ui, sans-serif;
   }
 }
 
 /* Glassmorphism & Cyberpunk Design System Utilities */
 .glass-card {
-  @apply backdrop-blur-xl bg-slate-900/60 border border-slate-800/80 rounded-xl shadow-xl transition-all duration-200;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  background-color: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(30, 41, 59, 0.8);
+  border-radius: 0.75rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-card-hover {
-  @apply glass-card hover:border-slate-700 hover:bg-slate-900/80 hover:shadow-2xl hover:scale-[1.005];
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  background-color: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(30, 41, 59, 0.8);
+  border-radius: 0.75rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card-hover:hover {
+  border-color: rgba(51, 65, 85, 0.9);
+  background-color: rgba(15, 23, 42, 0.8);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  transform: scale(1.005);
 }
 
 .glass-panel {
-  @apply backdrop-blur-2xl bg-slate-950/80 border border-slate-800/90 shadow-2xl;
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  background-color: rgba(2, 6, 23, 0.8);
+  border: 1px solid rgba(30, 41, 59, 0.9);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
 }
 
 .glow-primary {

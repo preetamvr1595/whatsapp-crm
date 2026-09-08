@@ -153,7 +153,7 @@ function Metric({
   tooltip: string;
 }) {
   return (
-    <div className="rounded-lg bg-slate-800/50 p-3">
+    <div className="rounded-lg bg-slate-950/40 border border-slate-800/60 p-3 backdrop-blur-md">
       <div className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-wider text-slate-400">
         {icon}
         <span>{label}</span>
